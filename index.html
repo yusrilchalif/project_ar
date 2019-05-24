@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>My First Web AR-with 8th WALL</title>
+
+    <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
+    <!-- XR Extras - provides utilities like load screen, almost there, and error handling. See github.com/8thwall/web/xrextras -->
+    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+
+    <!-- 8thWall Web - Replace the app key here with your own app key -->
+    <script src="//apps.8thwall.com/xrweb?appKey=QqDYmjhzw6d0VpDo24IKebT6ECRbcjOxIC5MPyEwGxy3nRAINMqmgJeohrUaxmAnsNl7m"></script>
+
+  <body>
+      <a-scene 
+        xrweb="disableWorldTracking: true"
+        xrextras-gesture-detector
+        xrextras-almost-there
+        xrextras-loading
+        xrextras-runtime-error>
+
+        <a-assets>
+            <!-- import 3D object with GLB extension -->
+            <a-assets-item id="obj-glb" src="scene.glb"></a-assets-item>
+            <img id="img-thumb" src="targets/Untitled-1.jpg">
+        </a-assets>
+        
+        <a-camera
+            position="0 4 10"
+            raycaster="objects: .cantap"
+            cursor="fuse: false; rayOrigin: mouse;">   
+        </a-camera>
+
+        <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
+        <a-light type="ambient" intensity="1.0"></a-light>
+
+        <a-entity
+            xrextras-named-image-target="name: video-target"
+            xrextras-play-video="thumb: #img-thumb; canstop: true"
+            geometry="primitive: plane; height: 1; width: 0.79">
+        </a-entity>
+
+        <a-entity xrextras-named-image-target="name: model-target">
+            <a-entity xrextras-one-finger-rotate geometry="#obj-glb"></a-entity>
+        </a-entity>
+
+      </a-scene>
+  </body>
+</head>
+</html>
