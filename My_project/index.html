@@ -30,7 +30,7 @@
             <!-- import 3D object with GLB extension -->
             <!-- credit https://poly.google.com/view/fhGcVhYNBW5 -->
             <a-assets-item id="drum-glb" src="model.glb"></a-assets-item>
-            <img id="img-thumb" src="targets/Untitled-1.jpg">
+            <img id="img-thumb" src="targets/img-thumb.jpg">
         </a-assets>
         
         <a-camera
@@ -40,10 +40,8 @@
       </a-camera>
 
       <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
-
       <a-light type="ambient" intensity="1"></a-light>
   
-
         <!-- Image scan detection -->
         <a-entity xrextras-named-image-target="name: img-thumb">
             <!-- add child -->
